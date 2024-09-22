@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Dots and 5s Countdown</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #countdown {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            text-align: center;
+        }
+        .floating-element {
+            position: absolute;
+            opacity: 0;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            element.style.left = `${Math.random() * 100}vw`;
+            element.style.fontSize = `${Math.random() * 20 + 10}px`;
+            
+            if (Math.random() < 0.5) {
+                element.textContent = '5';
+            } else {
+                element.textContent = '•';
+            }
+            
+            document.body.appendChild(element);
+            
+            setTimeout(() => {
+                element.remove();
+            }, 5000);
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const targetDate = new Date('2025-05-05T00:00:00');
+            const timeLeft = targetDate - now;
+
+            if (timeLeft <= 0) {
+                document.getElementById('countdown').textContent = 'Countdown finished!';
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(createFloatingElement, 200);
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
