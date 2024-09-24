@@ -43,10 +43,43 @@
                 opacity: 0;
             }
         }
+        #corner-icon {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        #corner-icon:hover {
+            opacity: 1;
+        }
+        #fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #fullscreen-image img {
+            max-width: 90%;
+            max-height: 90%;
+        }
     </style>
 </head>
 <body>
     <div id="countdown"></div>
+    <img id="corner-icon" src="https://github.com/EliteCronax/I-AM-COOBERT/blob/main/favicon/coobert.ico" alt="Corner Icon">
+    <div id="fullscreen-image">
+        <img src="https://github.com/EliteCronax/I-AM-COOBERT/blob/main/favicon/favicon.ico" alt="Fullscreen Image">
+    </div>
 
     <script>
         function createFloatingElement() {
@@ -89,6 +122,21 @@
         setInterval(createFloatingElement, 200);
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Corner icon click event
+        document.getElementById('corner-icon').addEventListener('click', function() {
+            const fullscreenImage = document.getElementById('fullscreen-image');
+            fullscreenImage.style.display = 'flex';
+            fullscreenImage.style.backgroundColor = 'white';
+            
+            setTimeout(() => {
+                fullscreenImage.style.backgroundColor = 'transparent';
+            }, 400);
+
+            setTimeout(() => {
+                fullscreenImage.style.display = 'none';
+            }, 2400);
+        });
     </script>
 </body>
 </html>
