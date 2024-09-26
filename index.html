@@ -66,12 +66,25 @@
             display: none;
             z-index: 1000;
         }
+        #shirt-icon {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            cursor: pointer;
+            z-index: 1001;
+        }
     </style>
 </head>
 <body>
     <div id="countdown"></div>
     <img id="corner-icon" src="https://raw.githubusercontent.com/EliteCronax/I-AM-COOBERT/refs/heads/main/favicon/coobert.ico" alt="Corner Icon">
     <img id="center-image" src="https://raw.githubusercontent.com/EliteCronax/I-AM-COOBERT/refs/heads/main/favicon/favicon.ico" alt="Center Image">
+    <a href="https://www.roblox.com/catalog/18294824153/Yung-Coobert" target="_blank">
+        <img id="shirt-icon" src="https://raw.githubusercontent.com/EliteCronax/I-AM-COOBERT/refs/heads/main/favicon/shirt.ico" alt="Shirt Icon">
+    </a>
 
     <script>
         function createFloatingElement() {
