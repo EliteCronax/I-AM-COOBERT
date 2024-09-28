@@ -26,8 +26,8 @@
             margin-bottom: 20px;
         }
         #center-image {
-            max-width: 80%;
-            max-height: 40vh;
+            max-width: 180%;
+            max-height: 100vh;
         }
         .floating-element {
             position: absolute;
@@ -50,29 +50,6 @@
                 opacity: 0;
             }
         }
-        #corner-icon {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 32px;
-            height: 32px;
-            opacity: 0.5;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        #corner-icon:hover {
-            opacity: 1;
-        }
-        #popup-image {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 50%;
-            max-height: 50%;
-            display: none;
-            z-index: 1000;
-        }
         #shirt-icon {
             width: 64px;
             height: 64px;
@@ -88,9 +65,6 @@
         <br>
         <img id="shirt-icon" src="https://raw.githubusercontent.com/EliteCronax/I-AM-COOBERT/refs/heads/main/favicon/shirt.ico" alt="Shirt Icon" onclick="window.open('https://www.roblox.com/catalog/18294824153/Yung-Coobert', '_blank')">
     </div>
-    <img id="corner-icon" src="https://raw.githubusercontent.com/EliteCronax/I-AM-COOBERT/refs/heads/main/favicon/coobert.ico" alt="Corner Icon">
-    <img id="popup-image" src="https://raw.githubusercontent.com/EliteCronax/I-AM-COOBERT/refs/heads/main/favicon/favicon.ico" alt="Popup Image">
-
     <script>
         function createFloatingElement() {
             const element = document.createElement('div');
@@ -132,16 +106,6 @@
         setInterval(createFloatingElement, 200);
         setInterval(updateCountdown, 1000);
         updateCountdown();
-
-        // Corner icon click event
-        document.getElementById('corner-icon').addEventListener('click', function() {
-            const popupImage = document.getElementById('popup-image');
-            popupImage.style.display = 'block';
-            
-            setTimeout(() => {
-                popupImage.style.display = 'none';
-            }, 2000);
-        });
     </script>
 </body>
 </html>
